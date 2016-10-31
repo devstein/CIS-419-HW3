@@ -47,7 +47,7 @@ modelBoostedDT.fit(Xtrain,ytrain)
 # output predictions on the remaining data
 ypred_DT = modelDT.predict(Xtest)
 ypred_BoostedDT = modelBoostedDT.predict(Xtest)
-
+print ypred_DT
 # compute the training accuracy of the model
 accuracyDT = accuracy_score(ytest, ypred_DT)
 accuracyBoostedDT = accuracy_score(ytest, ypred_BoostedDT)
