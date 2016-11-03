@@ -43,6 +43,7 @@ class BoostedDT:
 		#update all instances of weight
 		for i in range(n):
 			if (y[i] == predicted[i]): w[i] *= np.exp(-1 * self.betas[t])
+			else: w[i] *= np.exp(self.betas[t])
 		#normalize w_{t+1}
                 w = w / np.sum(w)
 

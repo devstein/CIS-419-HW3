@@ -41,21 +41,21 @@ Xtest = X[nTrain:,:]
 ytest = y[nTrain:]
 
 # train the decision tree
-modelDT = DecisionTreeClassifier()
-modelDT.fit(Xtrain,ytrain)
+#modelDT = DecisionTreeClassifier()
+#modelDT.fit(Xtrain,ytrain)
 
 # train the boosted DT
 modelBoostedDT = BoostedDT(numBoostingIters=100, maxTreeDepth=2)
 modelBoostedDT.fit(Xtrain,ytrain)
 
 # output predictions on the remaining data
-ypred_DT = modelDT.predict(Xtest)
+#ypred_DT = modelDT.predict(Xtest)
 ypred_BoostedDT = modelBoostedDT.predict(Xtest)
 # compute the training accuracy of the model
-accuracyDT = accuracy_score(ytest, ypred_DT)
+#accuracyDT = accuracy_score(ytest, ypred_DT)
 accuracyBoostedDT = accuracy_score(ytest, ypred_BoostedDT)
 
-print "Decision Tree Accuracy = "+str(accuracyDT)
+#print "Decision Tree Accuracy = "+str(accuracyDT)
 print "Boosted Decision Tree Accuracy = "+str(accuracyBoostedDT)
 
 # challenge data
@@ -74,28 +74,21 @@ challengeBoostedDT.fit(challengeTrainX, challengeTrainY)
 
 ypred_challenge = challengeBoostedDT.predict(challengeTestX)
 output = ""
+print ypred_challenge.size
 for i, x in enumerate(ypred_challenge):
 	output += str(x)
 	if (i != len(ypred_challenge) - 1): output += ','
 
-svm = LinearSVC() 
-svm.fit(challengeTrainX, challengeTrainY)
-ypred_svm = svm.predict(challengeTrainX)
-print "SVM: ", str(accuracy_score(challengeTrainY, ypred_svm))
-
-knear = KNeighborsClassifier()
-knear.fit(challengeTrainX, challengeTrainY)
-ypred_knear = knear.predict(challengeTrainX)
-print "knear: ", str(accuracy_score(challengeTrainY, ypred_knear))
+print output
 
 svc = SVC()
 svc.fit(challengeTrainX, challengeTrainY)
-ypred_svc = svc.predict(challengeTrainX)
-print "SVC: ", str(accuracy_score(challengeTrainY, ypred_svc))
+ypred_svc = svc.predict(challengeTestX)
 
-adaboost = AdaBoostClassifier()
-adaboost.fit(challengeTrainX, challengeTrainY)
-ypred_ada = adaboost.predict(challengeTrainX)
-print "ADA: ", str(accuracy_score(challengeTrainY, ypred_ada))
+print ypred_svc.size
+output = ""
+for i, x in enumerate(ypred_svc):
+        output += str(x)
+        if (i != len(ypred_svc) - 1): output += ','
 
-
+print output

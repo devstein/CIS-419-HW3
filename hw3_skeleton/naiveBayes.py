@@ -22,11 +22,11 @@ class NaiveBayes:
         '''
 	n,d = X.shape
 	self.classes = np.unique(y)
-	numClasses = len(self.classes)
+	self.numClasses = len(self.classes)
 	
 	# K x d matrix for predicting probs
-	self.conditional_probs = np.zeros([numClasses,d])
-	self.probs = np.zeros(numClasses)
+	self.conditional_probs = np.zeros([self.numClasses,d])
+	self.probs = np.zeros(self.numClasses)
 	#X[i,j] is the number of times feature j occurs in instance i
 	#For each label yk
 		#estimate P(Y=yk)
@@ -36,13 +36,9 @@ class NaiveBayes:
 		item = X[np.logical_or.reduce([y == curClass])]
 		self.probs[i] = item.shape[0] / float(n)
 	        if (self.useLaplaceSmoothing):
-			print "using laplace smoothin"
 			self.conditional_probs[i, :] = (1.0 + np.sum(item, axis=0) ) / (d + np.sum(item))
 		else:
-			print "not using laplace smoothing..."
 			self.conditional_probs[i,:] = np.sum(item, axis=0) / np.sum(item)
-	
-	print "Sum should be 1: ", np.sum(self.conditional_probs, axis=1)
 
     def predict(self, X):
         '''
@@ -71,7 +67,7 @@ class NaiveBayes:
 	probs += np.log(self.probs) 
         probs -= np.mean(probs)
 	probs = np.exp(probs)
-	#normalize as done in stack overflow
+	#normalize
 	sums = probs.sum(axis=1)
 	normalized = probs/sums[:,np.newaxis]
         return normalized
