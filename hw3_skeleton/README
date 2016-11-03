@@ -139,14 +139,7 @@ CHALLENGE_BESTCLASSIFIER_NAME: SVC
 
 # Copy and paste your brief paragraph describing your best classifier below
 CHALLENGE_BESTCLASSIFIER_DESCRIPTION:
-  Given that we were trying to classify labeled data and had a training set of between 5,000-6,000
-points, the best classifiers were likely going to be a K-Nearest Neighbor, Ensemble like AdaBoost,
-SVC, or LinearSVC. After training and testing all of these classifiers on the challenge training set
-and testing their prediction power, SVC reigned champion with 99.35% accuracy. I did not need
-to tune any parameters to achieve these results.
-
-
-
+  Given that we were trying to classify labeled data nd had a training set of between 5k-6k points, the best classifiers were likely going to be K-Nearest Neighbor, Ensemble like AdaBoost, SVC, or LinearSVC. After training and testing all of these classifiers on the challenge training set and testing their prediction power, SVC reigned champion wth 99.35% accuracy. I did not need to tune any parameters to achievethese results
 
 #######################################################################################
 # Feedback on the Assignment (OPTIONAL)
